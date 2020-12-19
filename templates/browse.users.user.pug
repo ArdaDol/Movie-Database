@@ -1,0 +1,71 @@
+doctype html
+title User | #{viewUser.username}
+link#bootstrap-css(href='//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css' rel='stylesheet')
+
+.container.mt-5
+	h1 User: #{viewUser.username}
+	nav
+		ol.breadcrumb
+			li.breadcrumb-item
+				a(href='/home') Home
+			li.breadcrumb-item 
+				a(href='/browse/users') Users
+			li.breadcrumb-item.active #{viewUser.username}
+
+.container.mt-5
+	.card.w-100
+		.media
+			img.align-self-start.mr-3(src=viewUser.avatar style="width: 12rem;")
+			.media-body
+				dl.row.mt-3.mr-3
+					dt.col-sm-3 Movies Contributed
+					dd.col-sm-9 #{viewUser.movies.length}
+
+					dt.col-sm-3 Followers
+					dd.col-sm-9 #{viewUser.followers.length}
+
+					dt.col-sm-3 Following
+					dd.col-sm-9 #{viewUser.following.length}
+
+					dd.col-sm-12 #{viewUser.bio}
+
+.container.mt-5.mb-5
+	.card.w-100
+		ul#info-tab.nav.nav-tabs(role='tablist')
+			li.nav-item(role='presentation')
+				a#followers-tab.nav-link.active(data-toggle='tab' href='#followers' role='tab' aria-controls='followers' aria-selected='true') Followers
+			li.nav-item(role='presentation')
+				a#following-tab.nav-link(data-toggle='tab' href='#following' role='tab' aria-controls='following' aria-selected='false') Following
+			li.nav-item(role='presentation')
+				a#movies-tab.nav-link(data-toggle='tab' href='#movies' role='tab' aria-controls='movies' aria-selected='false') Movies
+		
+		#linfo-tab-content.tab-content
+			#followers.tab-pane.fade.show.active(role='tabpanel' aria-labelledby='followers-tab')
+				.list-group
+					if viewUser.followers.length == 0
+						a.list-group-item.list-group-item-action(href='#')
+							h5.mt-0.mb-1 No Followers
+					else
+						each u in viewUser.followers
+							a.list-group-item.list-group-item-action(href='/browse/users/'+u._id)
+								h5.mt-0.mb-1= u.username
+										   
+			#following.tab-pane.fade(role='tabpanel' aria-labelledby='following-tab')
+				if viewUser.following.length == 0
+						a.list-group-item.list-group-item-action(href='#')
+							h5.mt-0.mb-1 Following No-one
+					else
+						each u in viewUser.following
+							a.list-group-item.list-group-item-action(href='/browse/users/'+u._id)
+								h5.mt-0.mb-1= u.username
+			#movies.tab-pane.fade(role='tabpanel' aria-labelledby='movies-tab')
+				if viewUser.movies.length == 0
+						a.list-group-item.list-group-item-action(href='#')
+							h5.mt-0.mb-1 No Movies
+					else
+						each m in viewUser.movies
+							a.list-group-item.list-group-item-action(href='/browse/users/'+u._id)
+								h5.mt-0.mb-1= u.title
+
+script(src='//code.jquery.com/jquery-3.5.1.slim.min.js')
+script(src='//cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js')

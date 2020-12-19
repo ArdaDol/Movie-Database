@@ -1,0 +1,18 @@
+{
+  "name": "2406-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node .",
+    "db": "mongod --dbpath=database"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "mongodb": "^3.6.3",
+    "pug": "^3.0.0"
+  }
+}

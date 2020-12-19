@@ -1,0 +1,36 @@
+doctype html
+title Home
+link#bootstrap-css(href='//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css' rel='stylesheet')
+
+if msg != ""
+	.alert.alert-primary.alert-dismissible.fade.show(role="alert") #{msg}
+		button.close(data-dismiss="alert" aria-label="Close")
+			span &times
+
+.container.mt-5
+	h1 Welcome #{user.username}
+.container.mt-5
+	.card-deck
+		.card
+			.card-header Movies
+			.card-body
+				p.card-text Browse all movies in the database
+			.card-footer
+				a.btn.btn-primary(href='/browse/movies') Browse Now
+
+		.card
+			.card-header People
+			.card-body
+				p.card-text Browse all actors, directors, writers in the database
+			.card-footer
+				a.btn.btn-primary(href='/browse/people') Browse Now
+
+		.card
+			.card-header Users
+			.card-body
+				p.card-text Browse all users in the database
+			.card-footer
+				a.btn.btn-primary(href='/browse/users') Browse Now
+
+script(src='//code.jquery.com/jquery-3.5.1.slim.min.js')
+script(src='//cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js')

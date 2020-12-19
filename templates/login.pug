@@ -1,0 +1,33 @@
+doctype html
+title Login
+link#bootstrap-css(href='//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css' rel='stylesheet')
+link(rel="stylesheet", href="login.css")
+
+if msg != ""
+	.alert.alert-primary.alert-dismissible.fade.show(role="alert") #{msg}
+		button.close(data-dismiss="alert" aria-label="Close")
+			span &times
+
+.container.login-container
+	.row
+		.col-md-6.login-form-1
+			h3 Login
+			form(action='/login' method='POST')
+				.form-group
+					input.form-control(type='text' name='username' placeholder='Username' value='')
+				.form-group
+					input.form-control(type='password' name='password' placeholder='Password' value='')
+				.form-group
+					input.btnSubmit(type='submit' value='Login')
+		.col-md-6.login-form-2
+			h3 Signup
+			form(action='/users' method='POST')
+				.form-group
+					input.form-control(type='text' name='username' placeholder='Username' value='')
+				.form-group
+					input.form-control(type='password' name='password' placeholder='Password' value='')
+				.form-group
+					input.btnSubmit(type='submit' value='Register')
+
+script(src='//code.jquery.com/jquery-3.5.1.slim.min.js')
+script(src='//cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js')

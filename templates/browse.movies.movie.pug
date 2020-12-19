@@ -1,0 +1,41 @@
+doctype html
+title Movie | #{movie.Title}
+link#bootstrap-css(href='//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css' rel='stylesheet')
+
+.container.mt-5
+	h1 Movie: #{movie.Title}
+	nav
+		ol.breadcrumb
+			li.breadcrumb-item
+				a(href='/home') Home
+			li.breadcrumb-item 
+				a(href='/browse/movies') Movies
+			li.breadcrumb-item.active #{movie.Title}
+
+.container.mt-5.mb-5
+	.card.w-100
+		.media
+			img.align-self-start.mr-3(src=movie.Poster)
+			.media-body
+				dl.row.mt-3.mr-3
+					dt.col-sm-3 Title
+					dd.col-sm-9 #{movie.Title}
+
+					dt.col-sm-3 Released
+					dd.col-sm-9 #{movie.Released}
+
+					dt.col-sm-3 Runtime
+					dd.col-sm-9 #{movie.Runtime}
+
+					dt.col-sm-3 Genres
+					dd.col-sm-9 #{movie.Genre}
+
+					dt.col-sm-3 Directors
+					dd.col-sm-9 #{movie.Director}
+					
+					dt.col-sm-3 Writers
+					dd.col-sm-9 #{movie.Writer}
+
+					dt.col-sm-3 Plot
+					dd.col-sm-9 #{movie.Plot}
+					

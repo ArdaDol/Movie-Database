@@ -1,0 +1,32 @@
+[
+    {
+        "username": "user1",
+        "password": "123",
+        "avatar": "https://lh3.googleusercontent.com/-JM2xsdjz2Bw/AAAAAAAAAAI/AAAAAAAAAAA/DVECr-jVlk4/photo.jpg",
+        "bio": "I love watching movies",
+        "con": false,
+        "followers": [],
+        "following": [],
+        "movies": []
+    },
+    {
+        "username": "user2",
+        "password": "123",
+        "avatar": "https://lh3.googleusercontent.com/-JM2xsdjz2Bw/AAAAAAAAAAI/AAAAAAAAAAA/DVECr-jVlk4/photo.jpg",
+        "bio": "I am an active contributer",
+        "con": true,
+        "followers": [],
+        "following": [],
+        "movies": []
+    },
+    {
+        "username": "user3",
+        "password": "123",
+        "avatar": "https://lh3.googleusercontent.com/-JM2xsdjz2Bw/AAAAAAAAAAI/AAAAAAAAAAA/DVECr-jVlk4/photo.jpg",
+        "bio": "I love reviewing movies",
+        "con": false,
+        "followers": [],
+        "following": [],
+        "movies": []
+    }
+]

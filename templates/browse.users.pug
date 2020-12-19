@@ -1,0 +1,66 @@
+doctype html
+title Users
+link#bootstrap-css(href='//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css' rel='stylesheet')
+
+if msg != ""
+	.alert.alert-primary.alert-dismissible.fade.show(role="alert") #{msg}
+		button.close(data-dismiss="alert" aria-label="Close")
+			span &times
+
+.container.mt-5
+	h1 Users
+	nav
+		ol.breadcrumb
+			li.breadcrumb-item
+				a(href='/home') Home
+			li.breadcrumb-item.active Users
+			li.ml-auto
+				.input-group
+					input#filter_string(type="text")
+					.input-group-append
+						button.btn.btn-primary(onclick="searchUser()") SEARCH
+
+
+
+.container.mb-5
+	.list-group
+		each u in users
+			a.list-group-item.list-group-item-action(href='/browse/users/'+u._id)
+				.media
+					img.mr-3(src=u.avatar style='width: 5rem;')
+					.media-body
+						h5.mt-0.mb-1= u.username
+						b Followers:
+						|   #{u.followers.length}
+						br
+						b Following:
+						|   #{u.following.length}
+
+
+.container.mb-5
+	ul.pagination.justify-content-center
+		li.page-item
+			a.page-link(href=pagination.first)
+				span FIRST
+
+		li.page-item
+			a.page-link(href=pagination.before)
+				span &laquo
+	
+		each p in pagination.other
+			li.page-item(class=p[2])
+				a.page-link(href=p[1])
+					span= p[0]
+
+		li.page-item
+			a.page-link(href=pagination.after)
+				span &raquo
+	
+		li.page-item
+			a.page-link(href=pagination.last)
+				span LAST
+
+script(src='//code.jquery.com/jquery-3.5.1.slim.min.js')
+script(src='//cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js')
+script
+	include ../public/general.js

@@ -1,0 +1,70 @@
+doctype html
+title Movies
+link#bootstrap-css(href='//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css' rel='stylesheet')
+
+if msg != ""
+	.alert.alert-primary.alert-dismissible.fade.show(role="alert") #{msg}
+		button.close(data-dismiss="alert" aria-label="Close")
+			span &times
+
+.container.mt-5
+	h1 Movies
+	nav
+		ol.breadcrumb
+			li.breadcrumb-item
+				a(href='/home') Home
+			li.breadcrumb-item.active Movies
+			li.ml-auto
+				.input-group
+					.input-group-prepend
+						select#filter_type.btn.btn-outline-dark(style="background: #FFF; color: #000;")
+							option(value="title") Title
+							option(value="year") Year
+							option(value="actor") Actor
+							option(value="director") Director
+					input#filter_string(type="text")
+					.input-group-append
+						button.btn.btn-primary(onclick="searchFilter()") SEARCH
+
+
+.container.mb-5
+	.list-group
+		each m in movies
+			a.list-group-item.list-group-item-action(href='/browse/movies/'+m._id)
+				.media
+					img.mr-3(src=m.Poster style='width: 5rem;')
+					.media-body
+						h5.mt-0.mb-1= m.Title
+						b Year:
+						|   #{m.Year}
+						br
+						b Plot:
+						|   #{m.Plot}
+
+.container.mb-5
+	ul.pagination.justify-content-center
+		li.page-item
+			a.page-link(href=pagination.first)
+				span FIRST
+
+		li.page-item
+			a.page-link(href=pagination.before)
+				span &laquo
+	
+		each p in pagination.other
+			li.page-item(class=p[2])
+				a.page-link(href=p[1])
+					span= p[0]
+
+		li.page-item
+			a.page-link(href=pagination.after)
+				span &raquo
+	
+		li.page-item
+			a.page-link(href=pagination.last)
+				span LAST
+
+script(src='//code.jquery.com/jquery-3.5.1.slim.min.js')
+script(src='//cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js')
+script
+	include ../public/general.js
